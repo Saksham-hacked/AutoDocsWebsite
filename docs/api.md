@@ -1,0 +1,4 @@
+# API Reference
+
+<!-- AUTODOCS:ROUTES_START -->
+<!-- AUTODOCS:ROUTES_END -->
