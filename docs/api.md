@@ -12,6 +12,14 @@
 SOURCE: .env.example:19-19
 CONFIDENCE: High
 
+### ANALYTICS_MAX_EVENTS_PER_IP
+- Name: ANALYTICS_MAX_EVENTS_PER_IP
+- Required/Optional: Optional
+- Default: 1000
+- Purpose: Sets an upper limit on the total number of analytics events that can be recorded from a single IP address.
+SOURCE: .env.example:23-23
+CONFIDENCE: High
+
 ## API Endpoints
 
 ### GET /api/stats
@@ -55,6 +63,26 @@ Fetches daily signup counts for the last seven days.
 SOURCE: api/stats.js:15-28
 CONFIDENCE: High
 
+### GET /api/stats/ip-events
+
+Aggregates analytics events to count occurrences per IP address. It returns a list of IP addresses that have generated events exceeding the ANALYTICS_MAX_EVENTS_PER_IP threshold, sorted by event count in descending order.
+
+- Method: GET
+- Path: /api/stats/ip-events
+- Parameters: None
+- Response example:
+  {
+    "success": true,
+    "data": [
+      { "_id": "192.168.1.1", "count": 1200 },
+      { "_id": "10.0.0.5", "count": 1100 }
+    ]
+  }
+- Error codes:
+  - 500 Internal Server Error: { "success": false, "error": "Error message" }
+SOURCE: api/stats.js:32-43
+CONFIDENCE: High
+
 ### POST /api/stats/event
 
 Tracks a specific analytics event.
@@ -65,7 +93,6 @@ Tracks a specific analytics event.
   - event: string, required. The name of the event. Valid values: page_view, waitlist_signup, pricing_view, cta_click, plan_selected.
   - page: string, required. The page where the event occurred.
   - userId: string, optional. An identifier for the user associated with the event.
-  - plan: string, optional. A specific plan related to the event. Valid values: hobby, pro, enterprise.
   - metadata: object, optional. Additional unstructured data related to the event.
 - Response example:
   {
