@@ -78,4 +78,27 @@ CONFIDENCE: High
 - Purpose: The default "from" email address to be used when sending emails via Resend.
 SOURCE: .env.example:1-17
 CONFIDENCE: High
+
+### General Analytics Settings
+
+- Name: ANALYTICS_ENABLED
+- Required: Yes
+- Default: true
+- Purpose: A boolean flag that controls whether the application's internal analytics tracking is active or disabled.
+SOURCE: .env.example:1-17
+CONFIDENCE: High
+
+- Name: ANALYTICS_RETENTION_DAYS
+- Required: Yes
+- Default: 90
+- Purpose: Determines the number of days for which analytics data should be retained within the application's storage.
+SOURCE: .env.example:1-17
+CONFIDENCE: High
+
+- Name: ANALYTICS_BATCH_SIZE
+- Required: Yes
+- Default: 100
+- Purpose: Sets the number of analytics events to collect before processing or sending them in a batch, optimizing performance and resource usage.
+SOURCE: .env.example:1-17
+CONFIDENCE: High
 <!-- AUTODOCS:ENV_END -->
