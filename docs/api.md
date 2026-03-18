@@ -20,6 +20,14 @@ CONFIDENCE: High
 SOURCE: .env.example:23-23
 CONFIDENCE: High
 
+### ANALYTICS_DEBUG_MODE
+- Name: ANALYTICS_DEBUG_MODE
+- Required/Optional: Optional
+- Default: false
+- Purpose: A boolean flag to enable or disable debug mode for analytics.
+SOURCE: .env.example:27-27
+CONFIDENCE: High
+
 ## API Endpoints
 
 ### GET /api/stats
@@ -102,5 +110,25 @@ Tracks a specific analytics event.
   - 400 Bad Request: { "error": "event and page are required" }
   - 500 Internal Server Error: { "success": false, "error": "Error message" }
 SOURCE: api/stats.js:31-37, models/analytics.model.js:4-24
+CONFIDENCE: High
+
+### GET /api/stats/health
+
+Provides a health check for the analytics service, including a database ping and the status of ANALYTICS_DEBUG_MODE.
+
+- Method: GET
+- Path: /api/stats/health
+- Parameters: None
+- Response example:
+  {
+    "success": true,
+    "data": {
+      "db": true,
+      "debug": false
+    }
+  }
+- Error codes:
+  - 500 Internal Server Error: { "success": false, "error": "Error message" }
+SOURCE: api/stats.js:74-81
 CONFIDENCE: High
 <!-- AUTODOCS:ROUTES_END -->

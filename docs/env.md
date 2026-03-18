@@ -115,4 +115,18 @@ CONFIDENCE: High
 - Purpose: Sets an upper limit on the total number of analytics events that can be recorded from a single IP address.
 SOURCE: .env.example:22-22, api/stats.js:8-9
 CONFIDENCE: High
+
+- Name: ANALYTICS_FLUSH_INTERVAL_SECS
+- Required: Optional
+- Default: 60
+- Purpose: The interval in seconds at which buffered analytics data should be flushed.
+SOURCE: .env.example:23-23, api/stats.js:13-14
+CONFIDENCE: High
+
+- Name: ANALYTICS_DEBUG_MODE
+- Required: Optional
+- Default: false
+- Purpose: A boolean flag to enable or disable debug mode for analytics.
+SOURCE: .env.example:24-24, api/stats.js:12-12
+CONFIDENCE: High
 <!-- AUTODOCS:ENV_END -->
