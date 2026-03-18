@@ -101,4 +101,18 @@ CONFIDENCE: High
 - Purpose: Sets the number of analytics events to collect before processing or sending them in a batch, optimizing performance and resource usage.
 SOURCE: .env.example:1-17
 CONFIDENCE: High
+
+- Name: ANALYTICS_SESSION_TIMEOUT_MINS
+- Required: Optional
+- Default: 30
+- Purpose: Defines the period, in minutes, after which an inactive user session is considered timed out for analytics purposes.
+SOURCE: .env.example:21-21, api/stats.js:10-11
+CONFIDENCE: High
+
+- Name: ANALYTICS_MAX_EVENTS_PER_IP
+- Required: Optional
+- Default: 1000
+- Purpose: Sets an upper limit on the total number of analytics events that can be recorded from a single IP address.
+SOURCE: .env.example:22-22, api/stats.js:8-9
+CONFIDENCE: High
 <!-- AUTODOCS:ENV_END -->

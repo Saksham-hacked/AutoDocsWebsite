@@ -2,8 +2,6 @@
 
 <!-- AUTODOCS:MODULES_START -->
 <!-- Managed by AutoDocs v1 — Changes may be overwritten -->
-<!-- Managed by AutoDocs v1 — Changes may be overwritten -->
-<!-- Managed by AutoDocs v1 — Changes may be overwritten -->
 ## .gitignore
 The .gitignore file configures Git to exclude specified files and directories from version control. This project's configuration ignores the .env file and the node_modules/ directory.
 SOURCE: .gitignore:1-2
@@ -141,5 +139,64 @@ CONFIDENCE: High
 - Signature: mongoose.model('Waitlist', waitlistSchema)
 - Purpose: Provides an interface for interacting with the 'waitlist' collection in the MongoDB database, allowing for operations like creating, reading, updating, and deleting waitlist entries.
 SOURCE: models/waitlist.model.js:1-35
+CONFIDENCE: High
+
+## models/analytics.model.js
+This file defines and exports a Mongoose model named `Analytics`. This model is designed to store various user interaction and event data within an application's database.
+SOURCE: models/analytics.model.js:1-38
+CONFIDENCE: High
+
+### analyticsSchema
+Defines the structure for analytics event entries.
+
+- event:
+  - Type: String
+  - Required: true
+  - Enum: ['page_view', 'waitlist_signup', 'pricing_view', 'cta_click', 'plan_selected']
+  - Purpose: Represents the type of event.
+- page:
+  - Type: String
+  - Required: true
+  - Purpose: Indicates the page where the event occurred.
+- userId:
+  - Type: String
+  - Required: false
+  - Default: null
+  - Purpose: Stores the ID of the user associated with the event.
+- plan:
+  - Type: String
+  - Required: false
+  - Enum: ['hobby', 'pro', 'enterprise', null]
+  - Default: null
+  - Purpose: Records the user's selected plan.
+- sessionId:
+  - Type: String
+  - Required: false
+  - Default: null
+  - Purpose: Stores the session ID.
+- ipAddress:
+  - Type: String
+  - Required: false
+  - Default: null
+  - Purpose: Stores the IP address from which the event originated.
+- metadata:
+  - Type: mongoose.Schema.Types.Mixed
+  - Required: false
+  - Default: {}
+  - Purpose: Stores additional, unstructured data.
+
+Schema Options:
+- timestamps: true (Automatically adds createdAt and updatedAt fields).
+
+Indexes:
+- { event: 1, createdAt: -1 }: Optimizes queries by event type and creation time.
+- { page: 1, createdAt: -1 }: Optimizes queries by page and creation time.
+SOURCE: models/analytics.model.js:1-38
+CONFIDENCE: High
+
+### Analytics Model
+- Signature: mongoose.model('Analytics', analyticsSchema)
+- Purpose: Provides an interface for interacting with the 'analytics' collection in the MongoDB database, allowing for operations like creating, reading, updating, and deleting analytics entries.
+SOURCE: models/analytics.model.js:1-38
 CONFIDENCE: High
 <!-- AUTODOCS:MODULES_END -->
