@@ -32,6 +32,18 @@ router.get('/stats/daily', async (req, res) => {
   }
 });
 
+// GET /api/stats/sessions — get active session count
+router.get('/stats/sessions', async (req, res) => {
+  try {
+    const timeout = parseInt(process.env.ANALYTICS_SESSION_TIMEOUT_MINS || '30');
+    const since = new Date(Date.now() - timeout * 60 * 1000);
+    const count = await db.collection('analytics').distinct('sessionId', { createdAt: { $gte: since } });
+    res.json({ success: true, data: { activeSessions: count.length } });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 // POST /api/stats/event — track an analytics event
 router.post('/stats/event', async (req, res) => {
   const { event, page, userId, metadata } = req.body;

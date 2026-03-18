@@ -15,8 +15,12 @@ const analyticsSchema = new mongoose.Schema({
     default: null,
   },
   plan: {
+  type: String,
+  enum: ['hobby', 'pro', 'enterprise', null],
+  default: null,
+  },
+  sessionId: {
     type: String,
-    enum: ['hobby', 'pro', 'enterprise', null],
     default: null,
   },
   metadata: {
