@@ -3,6 +3,7 @@
 <!-- AUTODOCS:MODULES_START -->
 <!-- Managed by AutoDocs v1 — Changes may be overwritten -->
 <!-- Managed by AutoDocs v1 — Changes may be overwritten -->
+<!-- Managed by AutoDocs v1 — Changes may be overwritten -->
 ## .gitignore
 The .gitignore file configures Git to exclude specified files and directories from version control. This project's configuration ignores the .env file and the node_modules/ directory.
 SOURCE: .gitignore:1-2
@@ -91,5 +92,54 @@ CONFIDENCE: High
 - Pricing Plans Grid: Displays three distinct pricing plans, each detailing name, description, price, and features. One plan is visually highlighted.
 - Inline Styles: An extensive <style> block defines CSS variables, global resets, and styling for navigation, hero, and pricing components.
 SOURCE: pricing.html:1-228
+CONFIDENCE: High
+
+## models/waitlist.model.js
+This file defines the Mongoose schema and model for managing waitlist entries.
+SOURCE: models/waitlist.model.js:1-35
+CONFIDENCE: High
+
+### waitlistSchema
+Defines the structure for a waitlist entry.
+
+- email:
+  - Type: String
+  - Required: true
+  - Unique: true
+  - Lowercase: true
+  - Trim: true
+  - Purpose: Stores the user's email address.
+- name:
+  - Type: String
+  - Trim: true
+  - Purpose: Stores the user's name.
+- plan:
+  - Type: String
+  - Enum: ['hobby', 'pro', 'enterprise']
+  - Default: 'hobby'
+  - Purpose: Indicates the user's desired plan.
+- referredBy:
+  - Type: String
+  - Default: null
+  - Purpose: Stores information about who referred the user.
+- status:
+  - Type: String
+  - Enum: ['pending', 'invited', 'active']
+  - Default: 'pending'
+  - Purpose: Represents the current status of the waitlist entry.
+- invitedAt:
+  - Type: Date
+  - Default: null
+  - Purpose: Records the timestamp when the user was invited.
+
+Schema Options:
+- timestamps: true (Automatically adds createdAt and updatedAt fields).
+SOURCE: models/waitlist.model.js:1-35
+CONFIDENCE: High
+
+### Waitlist Model
+- Signature: mongoose.model('Waitlist', waitlistSchema)
+- Purpose: Provides an interface for interacting with the 'waitlist' collection in the MongoDB database, allowing for operations like creating, reading, updating, and deleting waitlist entries.
+SOURCE: models/waitlist.model.js:1-35
 CONFIDENCE: High
 <!-- AUTODOCS:MODULES_END -->
