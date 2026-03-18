@@ -71,4 +71,17 @@ router.post('/stats/event', async (req, res) => {
   }
 });
 
+// GET /api/stats/flush — manually flush analytics buffer
+router.post('/stats/flush', async (req, res) => {
+  try {
+    const interval = parseInt(process.env.ANALYTICS_FLUSH_INTERVAL_SECS || '60');
+    const since = new Date(Date.now() - interval * 1000);
+    const count = await db.collection('analytics_buffer').countDocuments({ createdAt: { $lt: since } });
+    await db.collection('analytics_buffer').deleteMany({ createdAt: { $lt: since } });
+    res.json({ success: true, data: { flushed: count } });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 module.exports = router;
