@@ -23,6 +23,10 @@ const analyticsSchema = new mongoose.Schema({
     type: String,
     default: null,
   },
+  ipAddress: {
+    type: String,
+    default: null,
+  },
   metadata: {
     type: mongoose.Schema.Types.Mixed,
     default: {},

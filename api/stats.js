@@ -32,6 +32,21 @@ router.get('/stats/daily', async (req, res) => {
   }
 });
 
+// GET /api/stats/ip-events — get event count per IP
+router.get('/stats/ip-events', async (req, res) => {
+  try {
+    const limit = parseInt(process.env.ANALYTICS_MAX_EVENTS_PER_IP || '1000');
+    const results = await db.collection('analytics').aggregate([
+      { $group: { _id: '$ipAddress', count: { $sum: 1 } } },
+      { $match: { count: { $gte: limit } } },
+      { $sort: { count: -1 } },
+    ]).toArray();
+    res.json({ success: true, data: results });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
 // GET /api/stats/sessions — get active session count
 router.get('/stats/sessions', async (req, res) => {
   try {
