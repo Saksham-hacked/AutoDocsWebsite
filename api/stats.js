@@ -71,7 +71,18 @@ router.post('/stats/event', async (req, res) => {
   }
 });
 
-// GET /api/stats/flush — manually flush analytics buffer
+// GET /api/stats/health — analytics service health check
+router.get('/stats/health', async (req, res) => {
+  try {
+    const debug = process.env.ANALYTICS_DEBUG_MODE === 'true';
+    const ping = await db.command({ ping: 1 });
+    res.json({ success: true, data: { db: ping.ok === 1, debug } });
+  } catch (err) {
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+// POST /api/stats/flush — manually flush analytics buffer
 router.post('/stats/flush', async (req, res) => {
   try {
     const interval = parseInt(process.env.ANALYTICS_FLUSH_INTERVAL_SECS || '60');
