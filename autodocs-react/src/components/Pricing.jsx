@@ -15,7 +15,7 @@ const plans = [
     cta: 'Get started free',
   },
   {
-    name: 'PRO', price: { monthly: '$19', annual: '$15' },
+    name: 'PRO', price: { monthly: '$9', annual: '$5' },
     color: '#f5e642', dark: false, primary: true, badge: 'MOST POPULAR',
     features: ['Unlimited repositories', 'Unlimited doc PRs', 'All doc types', 'Custom templates', 'Priority processing', 'Email support'],
     missing: ['SSO / SAML'],
