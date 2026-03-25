@@ -25,6 +25,8 @@ body {
 /* Custom cursor - hide on touch devices */
 .cursor, .cursor-follower {
   position: fixed;
+  top: 0;
+  left: 0;
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);

@@ -99,7 +99,7 @@ export default function Navbar() {
           background: '#0a0a0a', borderBottom: '3px solid #f5e642',
           padding: '1.5rem 2rem', display: 'flex', flexDirection: 'column', gap: '1rem',
         }}>
-          {['How it works', 'Features', 'Pricing'].map(item => (
+          {['How it works', 'Features', 'Pricing', 'Beta'].map(item => (
             <a key={item} href={`#${item.toLowerCase().replace(/ /g, '-')}`}
               onClick={() => setMenuOpen(false)}
               style={{

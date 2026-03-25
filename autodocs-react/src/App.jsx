@@ -8,6 +8,7 @@ import HowItWorks from './components/HowItWorks'
 import Features from './components/Features'
 import CodeBlock from './components/CodeBlock'
 import Pricing from './components/Pricing'
+import BetaProgram from './components/BetaProgram'
 import CTA from './components/CTA'
 import Footer from './components/Footer'
 
@@ -56,6 +57,7 @@ export default function App() {
       <Features />
       <CodeBlock />
       <Pricing />
+      {/* <BetaProgram /> */}
       <CTA />
       <Footer />
     </>
