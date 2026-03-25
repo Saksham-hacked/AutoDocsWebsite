@@ -783,6 +783,12 @@ Defines the structure for each step in the AutoDocs workflow.
 - body: String (detailed description)
 - color: Hex color code (for visual styling)
 - icon: String (emoji character)
+
+Steps:
+- Install the App
+- Push your code
+- AI analyses it
+- PR opened!
 SOURCE: autodocs-react/src/components/HowItWorks.jsx:1-48
 CONFIDENCE: High
 
@@ -842,6 +848,33 @@ Defines the structure for each pricing plan.
 - features: Array of strings (included features)
 - missing: Array of strings (features not included)
 - cta: String (call-to-action text)
+
+Plans:
+- FREE:
+  - name: 'FREE'
+  - price: { monthly: '$0', annual: '$0' }
+  - color: '#fff'
+  - dark: true
+  - primary: false
+  - cta: 'Get started free'
+- PRO:
+  - name: 'PRO'
+  - price: { monthly: '$9', annual: '$5' }
+  - color: '#f5e642'
+  - dark: false
+  - primary: true
+  - badge: 'MOST POPULAR'
+  - features: ['Unlimited repositories', 'Unlimited doc PRs', 'All doc types', 'Custom templates', 'Priority processing', 'Email support']
+  - missing: ['SSO / SAML']
+  - cta: 'Start your trial'
+- ENTERPRISE:
+  - name: 'ENTERPRISE'
+  - price: { monthly: 'Custom', annual: 'Custom' }
+  - color: '#4256f5'
+  - dark: true
+  - primary: false
+  - features: ['All PRO features', 'SSO / SAML', 'Self-hosted deployment', 'Custom LLM integration', 'SLA guarantee', 'Dedicated support', 'Audit logs']
+  - cta: 'Contact sales'
 SOURCE: autodocs-react/src/components/Pricing.jsx:1-50
 CONFIDENCE: High
 
