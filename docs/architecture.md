@@ -633,7 +633,7 @@ SOURCE: autodocs-react/package-lock.json:1-1684
 CONFIDENCE: High
 
 ## autodocs-react/src/App.jsx
-This file defines the root React component, `App`, which serves as the main entry point and layout orchestrator.
+This file defines the main `App` functional React component, which serves as the root of the application's user interface.
 SOURCE: autodocs-react/src/App.jsx:1-49
 CONFIDENCE: High
 
@@ -643,6 +643,8 @@ CONFIDENCE: High
 - Dependencies: `useEffect`, `useRef` (React Hooks), `gsap`, `gsap/ScrollTrigger`.
 - Imported Components: `Navbar`, `Hero`, `Marquee`, `HowItWorks`, `Features`, `CodeBlock`, `Pricing`, `CTA`, `Footer`.
 - Functionality: Initializes and manages two custom cursor elements, attaching `mousemove` and hover event listeners.
+- Configuration: Registers `ScrollTrigger` plugin globally with GSAP.
+- Rendered Structure: Renders custom cursor elements and a sequential display of `Navbar`, `Hero`, `Marquee`, `HowItWorks`, `Features`, `CodeBlock`, `Pricing`, `CTA`, and `Footer`. The `BetaProgram` component is imported but commented out in the JSX rendering.
 SOURCE: autodocs-react/src/App.jsx:1-49
 CONFIDENCE: High
 
@@ -896,5 +898,61 @@ CONFIDENCE: High
 - Plugins: `react()` (from `@vitejs/plugin-react`) for React support.
 - Server: `allowedHosts: 'all'` (permits the development server to be accessed from any host).
 SOURCE: autodocs-react/vite.config.js:1-17
+CONFIDENCE: High
+
+## autodocs-react/.gitignore
+This `.gitignore` file defines patterns for files and directories that Git should intentionally untrack and ignore within the repository. Its purpose is to prevent the inclusion of transient, generated, or local-specific files in version control, ensuring a clean and portable repository.
+SOURCE: autodocs-react/.gitignore:1-30
+CONFIDENCE: High
+
+### Excluded Items
+- Dependency Directories: `node_modules/`
+- Build Output Directories: `dist/`, `dist-ssr/`
+- Local Environment Files: `.env`, `.env.local`, `.env.*.local`
+- Log Files: `npm-debug.log*`, `yarn-debug.log*`, `yarn-error.log*`, `pnpm-debug.log*`
+- Editor and IDE Configuration: `.vscode/`, `.idea/`, `*.suo`, `*.ntvs*`, `*.njsproj`, `*.sln`, `*.sw?`
+- Operating System Specific Files: `.DS_Store`, `Thumbs.db`
+SOURCE: autodocs-react/.gitignore:1-30
+CONFIDENCE: High
+
+## autodocs-react/src/components/BetaProgram.jsx
+The `BetaProgram` component is a React functional component, exported as the default export, responsible for rendering a comprehensive landing page section dedicated to a beta program. It does not accept any props. Its purpose is to inform potential testers about the program's benefits, launch timeline, collaboration opportunities, and provide a sign-up mechanism.
+SOURCE: autodocs-react/src/components/BetaProgram.jsx:1-836
+CONFIDENCE: High
+
+### BetaProgram Component
+- Signature: `function BetaProgram()`
+- Purpose: Renders a comprehensive landing page section dedicated to a beta program, informing potential testers about benefits, launch timeline, collaboration opportunities, and providing a sign-up mechanism.
+- Dependencies: `useState`, `useRef`, `useEffect` (React Hooks), `gsap`, `gsap/ScrollTrigger`.
+- Functionality: Manages form inputs and submission status, orchestrates scroll-triggered animations for various sections (header, perk cards, timeline, collaboration cards, sign-up form, progress bar). Includes a client-side `handleSubmit` for email validation and simulated submission.
+SOURCE: autodocs-react/src/components/BetaProgram.jsx:1-836
+CONFIDENCE: High
+
+### Constants
+- SPOTS_TOTAL: Integer (100). Total available spots in the beta program.
+- SPOTS_TAKEN: Integer (67). Number of spots currently filled.
+- PERKS: Array of objects. Describes beta program perks.
+  - icon: String (emoji)
+  - tag: String (e.g., 'EARLY ACCESS')
+  - title: String (e.g., 'SHAPE THE PRODUCT')
+  - body: String (description)
+  - color: Hexadecimal color string
+  - dark: Boolean (indicates dark text theme)
+- TIMELINE: Array of objects. Details product launch phases.
+  - phase: String (e.g., '01')
+  - label: String (e.g., 'ALPHA')
+  - date: String (e.g., 'NOW — APR 2026')
+  - status: String (e.g., 'active', 'upcoming')
+  - desc: String (description)
+  - tasks: Array of strings (list of tasks for the phase)
+- COLLABORATIONS: Array of objects. Outlines ways users can contribute.
+  - icon: String (emoji)
+  - title: String (e.g., 'BUG HUNTER')
+  - desc: String (description)
+  - reward: String (points earned)
+- FAQS: Array of objects. Contains frequently asked questions and answers.
+  - q: String (question)
+  - a: String (answer)
+SOURCE: autodocs-react/src/components/BetaProgram.jsx:1-836
 CONFIDENCE: High
 <!-- AUTODOCS:MODULES_END -->
