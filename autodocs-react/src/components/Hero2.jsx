@@ -79,6 +79,14 @@ export default function Hero() {
 
         {/* Terminal card */}
        PYTHON_AI_TIMEOUT_MS
+
+
+        <div ref={boxRef} style={{
+          background: '#0a0a0a', color: '#f5e642',
+          padding: '1.5rem', borderRadius: '8px',          
+          display: 'flex', flexDirection: 'column', alignItems: 'flex-start',
+          position: 'relative',
+        }}>
       </div>
 
       <style>{`
