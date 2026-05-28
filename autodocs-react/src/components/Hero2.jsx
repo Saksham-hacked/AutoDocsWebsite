@@ -54,50 +54,65 @@ export default function Hero() {
         display: 'grid', gridTemplateColumns: '1fr 1fr',
         gap: '4rem', alignItems: 'center', position: 'relative',
       }}>
-        
-
-        {/* Terminal card */}
-        <div ref={boxRef} style={{ position: 'relative' }} className="hero-terminal">
-          <div style={{
-            background: '#0a0a0a', border: '3px solid #0a0a0a',
-            boxShadow: '10px 10px 0 #f5e642', overflow: 'hidden',
+        <div>
+          <div ref={tagRef} style={{
+            display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+            background: '#f5e642', border: '2px solid #0a0a0a',
+            padding: '6px 14px', marginBottom: '1.5rem',
+            boxShadow: '3px 3px 0 #0a0a0a',
+            fontFamily: 'var(--font-mono)', fontSize: '0.65rem',
+            textTransform: 'uppercase', letterSpacing: '0.1em',
           }}>
-            <div style={{
-              background: '#1a1a1a', padding: '10px 16px',
-              borderBottom: '2px solid #333',
-              display: 'flex', alignItems: 'center', gap: '8px',
-            }}>
-              {['#ff5f57', '#febc2e', '#28c840'].map(c => (
-                <div key={c} style={{ width: 12, height: 12, borderRadius: '50%', background: c }} />
-              ))}
-              <span style={{ color: '#666', marginLeft: '0.5rem', fontSize: '0.68rem', fontFamily: 'var(--font-mono)' }}>autodocs pipeline</span>
-            </div>
-            <div style={{ padding: '1.5rem', fontFamily: 'var(--font-mono)', fontSize: '0.75rem', lineHeight: 2, overflowX: 'auto' }}>
-              {[
-                { color: '#666', text: '$ git push origin main' },
-                { color: '#f5e642', text: '→ webhook received' },
-                { color: '#888', text: '  ✓ validate_input    [1 file]' },
-                { color: '#888', text: '  ✓ update_memory     [embedded]' },
-                { color: '#888', text: '  ✓ retrieve_context  [5 matches]' },
-                { color: '#888', text: '  ✓ impact_analysis   [NEW_API_ROUTE]' },
-                { color: '#888', text: '  ✓ generate_docs     [High]' },
-                { color: '#00c853', text: '  ✓ PR opened        [docs/api.md]' },
-                { color: '#f5e642', text: '📝 AutoDocs: NEW_API_ROUTE (abc1234)' },
-              ].map((line, i) => (
-                <div key={i} style={{ color: line.color, whiteSpace: 'nowrap' }}>{line.text}</div>
-              ))}
-            </div>
+            <span style={{
+              width: 8, height: 8, background: '#00c853',
+              borderRadius: '50%', display: 'inline-block',
+              animation: 'livepulse 1.5s infinite',
+            }} />
+            GitHub App · Zero Config · AI-Powered
           </div>
 
-          <div style={{
-            position: 'absolute', top: -18, right: -18,
-            background: '#ff3b30', border: '3px solid #0a0a0a',
-            padding: '6px 12px', transform: 'rotate(8deg)',
-            boxShadow: '3px 3px 0 #0a0a0a',
-            fontFamily: 'var(--font-display)', fontSize: '0.9rem',
-            color: '#fff', letterSpacing: '0.05em', zIndex: 10,
-          }}>IT JUST WORKS</div>
+          <div ref={titleRef}>
+            {['YOUR DOCS', 'WRITE', 'THEMSELVES.'].map((line, i) => (
+              <div key={i} style={{
+                display: 'block',
+                fontFamily: 'var(--font-display)',
+                fontSize: 'clamp(3rem, 7vw, 6.5rem)',
+                lineHeight: 0.95, letterSpacing: '0.02em',
+                color: i === 1 ? 'transparent' : '#0a0a0a',
+                WebkitTextStroke: i === 1 ? '3px #0a0a0a' : 'none',
+              }}>{line}</div>
+            ))}
+          </div>
+
+          <p ref={subtitleRef} style={{
+            fontFamily: 'var(--font-body)', fontSize: 'clamp(0.9rem, 2vw, 1.1rem)',
+            color: '#333', maxWidth: '480px',
+            marginTop: '1.5rem', lineHeight: 1.65,
+          }}>
+            AutoDocs watches every commit and opens PRs that keep your documentation perfectly in sync. Push code — get docs.
+          </p>
+
+          <div ref={ctaRef} style={{
+            display: 'flex', gap: '1rem', marginTop: '2.5rem', flexWrap: 'wrap',
+          }}>
+            <a href={INSTALL_URL} className="btn-primary-hero">Install Free →</a>
+            <a href="#how-it-works" className="btn-ghost-hero">See How →</a>
+          </div>
+
+          <div ref={statsRef} style={{
+            display: 'flex', gap: '2rem', marginTop: '3rem', flexWrap: 'wrap',
+          }}>
+            {[['7', 'Pipeline nodes'], ['~60s', 'Push to PR'], ['0', 'Config files']].map(([num, label]) => (
+              <div key={label}>
+                <div style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', letterSpacing: '0.05em' }}>{num}</div>
+                <div style={{ fontFamily: 'var(--font-mono)', color: '#666', textTransform: 'uppercase', letterSpacing: '0.08em', fontSize: '0.62rem' }}>{label}</div>
+              </div>
+            ))}
+          </div>
         </div>
+
+        {/* Terminal card */}
+       PYTHON_AI_TIMEOUT_MS
       </div>
 
       <style>{`
