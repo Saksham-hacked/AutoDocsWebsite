@@ -43,69 +43,18 @@ export default function Hero() {
       position: 'relative', overflow: 'hidden',
     }} className="hero-section">
       {/* BG grid */}
-      
+      <div style={{
+        position: 'absolute', inset: 0,
+        backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(0,0,0,0.04) 40px, rgba(0,0,0,0.04) 41px), repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(0,0,0,0.04) 40px, rgba(0,0,0,0.04) 41px)',
+        pointerEvents: 'none',
+      }} />
 
       <div className="hero-inner" style={{
         maxWidth: '1200px', margin: '0 auto', width: '100%',
         display: 'grid', gridTemplateColumns: '1fr 1fr',
         gap: '4rem', alignItems: 'center', position: 'relative',
       }}>
-        <div>
-          <div ref={tagRef} style={{
-            display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
-            background: '#f5e642', border: '2px solid #0a0a0a',
-            padding: '6px 14px', marginBottom: '1.5rem',
-            boxShadow: '3px 3px 0 #0a0a0a',
-            fontFamily: 'var(--font-mono)', fontSize: '0.65rem',
-            textTransform: 'uppercase', letterSpacing: '0.1em',
-          }}>
-            <span style={{
-              width: 8, height: 8, background: '#00c853',
-              borderRadius: '50%', display: 'inline-block',
-              animation: 'livepulse 1.5s infinite',
-            }} />
-            GitHub App · Zero Config · AI-Powered
-          </div>
-
-          <div ref={titleRef}>
-            {['YOUR DOCS', 'WRITE', 'THEMSELVES.'].map((line, i) => (
-              <div key={i} style={{
-                display: 'block',
-                fontFamily: 'var(--font-display)',
-                fontSize: 'clamp(3rem, 7vw, 6.5rem)',
-                lineHeight: 0.95, letterSpacing: '0.02em',
-                color: i === 1 ? 'transparent' : '#0a0a0a',
-                WebkitTextStroke: i === 1 ? '3px #0a0a0a' : 'none',
-              }}>{line}</div>
-            ))}
-          </div>
-
-          <p ref={subtitleRef} style={{
-            fontFamily: 'var(--font-body)', fontSize: 'clamp(0.9rem, 2vw, 1.1rem)',
-            color: '#333', maxWidth: '480px',
-            marginTop: '1.5rem', lineHeight: 1.65,
-          }}>
-            AutoDocs watches every commit and opens PRs that keep your documentation perfectly in sync. Push code — get docs.
-          </p>
-
-          <div ref={ctaRef} style={{
-            display: 'flex', gap: '1rem', marginTop: '2.5rem', flexWrap: 'wrap',
-          }}>
-            <a href={INSTALL_URL} className="btn-primary-hero">Install Free →</a>
-            <a href="#how-it-works" className="btn-ghost-hero">See How →</a>
-          </div>
-
-          <div ref={statsRef} style={{
-            display: 'flex', gap: '2rem', marginTop: '3rem', flexWrap: 'wrap',
-          }}>
-            {[['7', 'Pipeline nodes'], ['~60s', 'Push to PR'], ['0', 'Config files']].map(([num, label]) => (
-              <div key={label}>
-                <div style={{ fontFamily: 'var(--font-display)', fontSize: '2rem', letterSpacing: '0.05em' }}>{num}</div>
-                <div style={{ fontFamily: 'var(--font-mono)', color: '#666', textTransform: 'uppercase', letterSpacing: '0.08em', fontSize: '0.62rem' }}>{label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
+        
 
         {/* Terminal card */}
         <div ref={boxRef} style={{ position: 'relative' }} className="hero-terminal">
