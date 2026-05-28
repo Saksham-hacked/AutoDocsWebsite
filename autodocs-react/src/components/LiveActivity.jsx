@@ -168,7 +168,8 @@ export default function LiveActivity() {
                       )}
                       {!e.conf && (
                         <span style={{ fontFamily: "var(--mono)", fontSize: ".62rem", color: "var(--muted)" }}>
-                          0 files updated
+                          00 files updated
+
                         </span>
                       )}
                       <span className="la-time">{e.time}</span>
