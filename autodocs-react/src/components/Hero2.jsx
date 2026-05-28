@@ -54,39 +54,11 @@ export default function Hero() {
         display: 'grid', gridTemplateColumns: '1fr 1fr',
         gap: '4rem', alignItems: 'center', position: 'relative',
       }}>
-        <div>
-          <div ref={tagRef} style={{
-            display: 'inline-flex', alignItems: 'center', gap: '0.5rem',            
-            fontFamily: 'var(--font-mono)', fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '0.15em',
-          }}>
-            <div style={{ background: '#f5e642', width: '4px', height: '4px', borderRadius: '50%' }} />
-            <div>Latest</div>
-          </div>
-
-          <h1 ref={titleRef} style={{ fontSize: '2.5rem', marginTop: '0.5rem' }}>
-            <span style={{ color: '#f5e642', fontWeight: '700' }}>Autodocs</span> React
-          </h1>
-
-          <p ref={subtitleRef} style={{ fontSize: '1.25rem', marginTop: '0.5rem' }}>
-            A React library for creating <span style={{ color: '#f5e642', fontWeight: '700' }}>autodocs</span> for your React components.
-          </p>
-
-          <a href={INSTALL_URL} target="_blank" rel="noopener noreferrer" className="btn-primary-hero" ref={ctaRef}>
-            Install
-          </a>
-        </div>
+        
         
 
         {/* Terminal card */}
        PYTHON_AI_TIMEOUT_MS
-
-
-        <div ref={boxRef} style={{
-          background: '#0a0a0a', color: '#f5e642',
-          padding: '1.5rem', borderRadius: '8px',          
-          display: 'flex', flexDirection: 'column', alignItems: 'flex-start',
-          position: 'relative',
-        }}>
       </div>
 
       <style>{`
