@@ -60,6 +60,38 @@ export default function Hero() {
         {/* Terminal card */}
        PYTHON_AI_TIMEOUT_MS
       </div>
+      <div className="hero-inner" style={{
+        maxWidth: '1200px', margin: '0 auto', width: '100%',
+        display: 'grid', gridTemplateColumns: '1fr 1fr',
+        gap: '4rem', alignItems: 'center', position: 'relative',
+      }}>      
+      {/* Terminal card */}
+      <div ref={boxRef} style={{
+        position: 'relative',
+        background: '#0a0a0a',
+        borderRadius: '20px',
+        padding: '1.5rem',
+        overflow: 'hidden',
+      }}>
+        <div style={{
+            position: 'absolute', top: 0, left: 0, right: 0, bottom: 0,
+            background: '#0a0a0a',
+            borderRadius: '20px',    
+        }} />
+        <div style={{
+            position: 'relative', zIndex: 1,
+            background: '#0a0a0a',
+            borderRadius: '20px',
+            padding: '1.5rem',
+            overflow: 'hidden',    
+        }}>
+            <img src="/terminal.png" alt="Terminal demo" style={{ width: '100%', display: 'block', borderRadius: '12px' }} />
+        </div>
+      </div>
+        </div>
+        
+
+
 
       <style>{`
         @keyframes livepulse {
