@@ -309,7 +309,7 @@ CONFIDENCE: High
 ### CTA Component
 - Signature: `function CTA()`
 - Purpose: Renders a CTA section encouraging users to install the 'AutoDocs' GitHub App, with a headline, description, and two interactive buttons.
-- Dependencies: `react` (`useEffect`, `useRef`), `gsap`, `gsap/ScrollTrigger`.
+- Dependencies: `react` (`useEffect`, `useRef`), `gsap`, `gsap/ScrollTrigger`).
 - Constants: `INSTALL_URL` ('https://github.com/apps/autodoc-test-110/installations/new').
 SOURCE: autodocs-clay/src/components/CTA.jsx:1-36
 CONFIDENCE: High
@@ -379,7 +379,6 @@ CONFIDENCE: High
 ### Statistics Data Model
 - num: String
 - label: String
-- color: String
 SOURCE: autodocs-clay/src/components/Hero.jsx:1-50
 CONFIDENCE: High
 
@@ -460,7 +459,7 @@ CONFIDENCE: High
 ### Pricing Component
 - Signature: `function Pricing()`
 - Purpose: Renders a pricing section with three plans, a monthly/annual billing toggle, and scroll-triggered animations.
-- Dependencies: `useEffect`, `useRef`, `useState` (React Hooks), `gsap`, `gsap/ScrollTrigger`.
+- Dependencies: `useEffect`, `useRef`, `useState` (React Hooks), `gsap`, `gsap/ScrollTrigger`).
 - Constants: `INSTALL_URL` ('https://github.com/apps/autodoc-test-110/installations/new').
 SOURCE: autodocs-clay/src/components/Pricing.jsx:1-60
 CONFIDENCE: High
@@ -656,7 +655,7 @@ CONFIDENCE: High
 ### CTA Component
 - Signature: `function CTA()`
 - Purpose: Renders a CTA section encouraging users to install the Autodocs GitHub App, with scroll-triggered animations.
-- Dependencies: `react` (`useEffect`, `useRef`), `gsap`, `gsap/ScrollTrigger`.
+- Dependencies: `react` (`useEffect`, `useRef`), `gsap`, `gsap/ScrollTrigger`).
 - Constants: `INSTALL_URL` ('https://github.com/apps/autodoc-test-110/installations/new').
 SOURCE: autodocs-react/src/components/CTA.jsx:1-34
 CONFIDENCE: High
@@ -669,7 +668,7 @@ CONFIDENCE: High
 ### CodeBlock Component
 - Signature: `function CodeBlock()`
 - Purpose: Renders a section combining marketing text with a simulated code block, illustrating documentation generation within markdown files.
-- Dependencies: `react` (`useEffect`, `useRef`), `gsap`, `gsap/ScrollTrigger`.
+- Dependencies: `react` (`useEffect`, `useRef`), `gsap`, `gsap/ScrollTrigger`).
 SOURCE: autodocs-react/src/components/CodeBlock.jsx:1-50
 CONFIDENCE: High
 
@@ -702,7 +701,7 @@ CONFIDENCE: High
 ### Features Component
 - Signature: `function Features()`
 - Purpose: Renders a section displaying product capabilities in a visually engaging grid layout with scroll-triggered animations.
-- Dependencies: `useEffect`, `useRef` (React Hooks), `gsap`, `gsap/ScrollTrigger`.
+- Dependencies: `useEffect`, `useRef` (React Hooks), `gsap`, `gsap/ScrollTrigger`).
 SOURCE: autodocs-react/src/components/Features.jsx:1-50
 CONFIDENCE: High
 
@@ -741,26 +740,38 @@ CONFIDENCE: High
 
 ## autodocs-react/src/components/Hero.jsx
 This file exports a React functional component for the main hero section.
-SOURCE: autodocs-react/src/components/Hero.jsx:1-50
+SOURCE: autodocs-react/src/components/Hero.jsx:1-104
 CONFIDENCE: High
 
 ### Hero Component
 - Signature: `function Hero()`
-- Purpose: Renders the main hero section, presenting key information about the AutoDocs application with visual elements and animations.
-- Dependencies: `useEffect`, `useRef` (React Hooks), `gsap`.
-- Constants: `INSTALL_URL` ('https://github.com/apps/autodoc-test-110/installations/new').
-SOURCE: autodocs-react/src/components/Hero.jsx:1-50
+- Purpose: Renders a prominent hero section for a webpage, designed to introduce a product or service. It features a dynamic title, a descriptive subtitle, call-to-action buttons, and key statistics. The component incorporates visual styling, including a background grid pattern, and applies animations to its content elements upon mounting.
+- Props: None.
+- Return Type: A React element representing a `section` HTML element and its children.
+- Interactions:
+  - Contains an anchor (`<a>`) element linking to the `INSTALL_URL` constant for GitHub App installation.
+  - Contains an anchor (`<a>`) element linking to an internal anchor `#how-it-works` for page navigation.
+- Dependencies:
+  - `useEffect` from `react`: Initializes and controls animations after component mounts.
+  - `useRef` from `react`: Creates mutable `ref` objects for direct DOM element access for animation.
+  - `gsap` from `gsap`: Defines and executes complex timeline-based animations.
+- Constants:
+  - `INSTALL_URL`: String constant `'https://github.com/apps/autodoc-test-110/installations/new'` used for the primary call-to-action button.
+- Refs: Multiple `useRef` hooks are initialized to reference specific DOM elements for animation control: `heroRef`, `titleRef`, `subtitleRef`, `ctaRef`, `tagRef`, `boxRef`, and `statsRef`.
+- Animation Logic: Uses `gsap` to animate `tagRef`, `titleRef` (children), `subtitleRef`, `ctaRef`, `statsRef`, and `boxRef` elements. Elements are initially invisible and offset, then animated into view sequentially using a `gsap.timeline`. An additional continuous `yoyo` animation is applied to `boxRef`.
+- Styling: Utilizes extensive inline styles and an embedded `<style>` block to define its visual appearance, including:
+  - Responsive design rules via `@media` queries.
+  - Custom button styles (`.btn-primary-hero`, `.btn-ghost-hero`) with hover effects.
+  - A `livepulse` keyframe animation for a small indicator element.
+  - A background grid pattern applied via CSS `repeating-linear-gradient`.
+- Unusual String: The literal string `PYTHON_AI_TIMEOUT_MS` is present within the JSX structure, serving as a placeholder or artifact.
+SOURCE: autodocs-react/src/components/Hero.jsx:1-104
 CONFIDENCE: High
 
-### Statistics Data Model
-- num: String
-- label: String
-SOURCE: autodocs-react/src/components/Hero.jsx:1-50
-CONFIDENCE: High
-
-### Terminal Output Data Model
-- Array of objects representing terminal output lines.
-SOURCE: autodocs-react/src/components/Hero.jsx:1-50
+### Statistics Display
+- Data: Hardcoded within JSX, consisting of number and label pairs.
+  - Example: `['7', 'Pipeline nodes']`, `['~60s', 'Push to PR']`, `['0', 'Config files']`.
+SOURCE: autodocs-react/src/components/Hero.jsx:1-104
 CONFIDENCE: High
 
 ## autodocs-react/src/components/HowItWorks.jsx
@@ -771,7 +782,7 @@ CONFIDENCE: High
 ### HowItWorks Component
 - Signature: `function HowItWorks()`
 - Purpose: Renders a four-step process for the AutoDocs application, serving as a visual guide with interactive cards and scroll-triggered animations.
-- Dependencies: `useEffect`, `useRef` (React Hooks), `gsap`, `gsap/ScrollTrigger`.
+- Dependencies: `useEffect`, `useRef` (React Hooks), `gsap`, `gsap/ScrollTrigger`).
 SOURCE: autodocs-react/src/components/HowItWorks.jsx:1-48
 CONFIDENCE: High
 
@@ -825,7 +836,7 @@ CONFIDENCE: High
 ### Pricing Component
 - Signature: `function Pricing()`
 - Purpose: Displays a pricing section with three distinct plans, a toggle for monthly/annual billing, and scroll-triggered animations.
-- Dependencies: `useEffect`, `useRef`, `useState` (React Hooks), `gsap`, `gsap/ScrollTrigger`.
+- Dependencies: `useEffect`, `useRef`, `useState` (React Hooks), `gsap`, `gsap/ScrollTrigger`).
 - Constants: `INSTALL_URL` ('https://github.com/apps/autodoc-test-110/installations/new').
 SOURCE: autodocs-react/src/components/Pricing.jsx:1-50
 CONFIDENCE: High
@@ -912,7 +923,7 @@ CONFIDENCE: High
 - Log Files: `npm-debug.log*`, `yarn-debug.log*`, `yarn-error.log*`, `pnpm-debug.log*`
 - Editor and IDE Configuration: `.vscode/`, `.idea/`, `*.suo`, `*.ntvs*`, `*.njsproj`, `*.sln`, `*.sw?`
 - Operating System Specific Files: `.DS_Store`, `Thumbs.db`
-SOURCE: autodocs-react/.gitignore:1-30
+SOURCE: autodocs-react/autodocs-react/.gitignore:1-30
 CONFIDENCE: High
 
 ## autodocs-react/src/components/BetaProgram.jsx
@@ -923,7 +934,7 @@ CONFIDENCE: High
 ### BetaProgram Component
 - Signature: `function BetaProgram()`
 - Purpose: Renders a comprehensive landing page section dedicated to a beta program, informing potential testers about benefits, launch timeline, collaboration opportunities, and providing a sign-up mechanism.
-- Dependencies: `useState`, `useRef`, `useEffect` (React Hooks), `gsap`, `gsap/ScrollTrigger`.
+- Dependencies: `useState`, `useRef`, `useEffect` (React Hooks), `gsap`, `gsap/ScrollTrigger`).
 - Functionality: Manages form inputs and submission status, orchestrates scroll-triggered animations for various sections (header, perk cards, timeline, collaboration cards, sign-up form, progress bar). Includes a client-side `handleSubmit` for email validation and simulated submission.
 SOURCE: autodocs-react/src/components/BetaProgram.jsx:1-836
 CONFIDENCE: High
