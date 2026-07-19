@@ -634,18 +634,18 @@ CONFIDENCE: High
 
 ## autodocs-react/src/App.jsx
 This file defines the main `App` functional React component, which serves as the root of the application's user interface.
-SOURCE: autodocs-react/src/App.jsx:1-49
+SOURCE: autodocs-react/src/App.jsx:1-64
 CONFIDENCE: High
 
 ### App Component
 - Signature: `function App()`
 - Purpose: Assembles the application's page structure by rendering a sequence of UI sections and implements a custom interactive cursor effect.
 - Dependencies: `useEffect`, `useRef` (React Hooks), `gsap`, `gsap/ScrollTrigger`.
-- Imported Components: `Navbar`, `Hero`, `Marquee`, `HowItWorks`, `Features`, `CodeBlock`, `Pricing`, `CTA`, `Footer`.
+- Imported Components: `Navbar`, `Hero`, `Marquee`, `HowItWorks`, `Features`, `CodeBlock`, `Pricing`, `FAQ`, `StatusDashboard`, `CTA`, `Footer`.
 - Functionality: Initializes and manages two custom cursor elements, attaching `mousemove` and hover event listeners.
 - Configuration: Registers `ScrollTrigger` plugin globally with GSAP.
-- Rendered Structure: Renders custom cursor elements and a sequential display of `Navbar`, `Hero`, `Marquee`, `HowItWorks`, `Features`, `CodeBlock`, `Pricing`, `CTA`, and `Footer`. The `BetaProgram` component is imported but commented out in the JSX rendering.
-SOURCE: autodocs-react/src/App.jsx:1-49
+- Rendered Structure: Renders custom cursor elements and a sequential display of `Navbar`, `Hero`, `Marquee`, `HowItWorks`, `Features`, `CodeBlock`, `Pricing`, `FAQ`, `StatusDashboard`, `CTA`, and `Footer`. The `BetaProgram` component is imported but commented out in the JSX rendering.
+SOURCE: autodocs-react/src/App.jsx:1-64
 CONFIDENCE: High
 
 ## autodocs-react/src/components/CTA.jsx
@@ -954,5 +954,63 @@ CONFIDENCE: High
   - q: String (question)
   - a: String (answer)
 SOURCE: autodocs-react/src/components/BetaProgram.jsx:1-836
+CONFIDENCE: High
+
+## autodocs-react/src/components/StatusDashboard.jsx
+This file defines the `StatusDashboard` React functional component, which provides a live-updating status panel for the AutoDocs pipeline. It displays the health and metrics of each pipeline stage, polling a backend health endpoint and rendering animated metric cards with sparkline-style throughput indicators. The component gracefully degrades to simulated demo data if the backend is unreachable or the fetch operation fails.
+SOURCE: autodocs-react/src/components/StatusDashboard.jsx:1-395
+CONFIDENCE: High
+
+### StatusDashboard Component
+- Signature: `export default function StatusDashboard()`
+- Purpose: Renders an overall system uptime header and a grid of pipeline stage cards. It attempts to fetch live health data from `/api/pipeline/health` on mount and gracefully degrades to demo data on failure. It also orchestrates scroll-triggered animations for its header and stage cards.
+- Dependencies: `useState`, `useEffect`, `useRef` (React Hooks), `gsap`, `ScrollTrigger` (GSAP plugin).
+- Constants: `uptime` (simulated, calculated on mount).
+SOURCE: autodocs-react/src/components/StatusDashboard.jsx:1-395
+CONFIDENCE: High
+
+### STAGES Data Model
+Defines the five AutoDocs pipeline stages.
+
+- Type: Array of objects.
+- Each object represents a pipeline stage with the following properties:
+  - id: String (Unique identifier, e.g., 'webhook')
+  - name: String (Display name, e.g., 'Webhook Receiver')
+  - description: String (Detailed explanation of the stage's function)
+  - icon: String (Emoji icon representing the stage)
+  - avgLatency: Number (Simulated average latency in milliseconds)
+  - throughputBase: Number (Base value for sparkline throughput data generation)
+SOURCE: autodocs-react/src/components/StatusDashboard.jsx:1-395
+CONFIDENCE: High
+
+### fetchPipelineHealth Function
+- Signature: `async function fetchPipelineHealth(apiBase: string)`
+- Purpose: Asynchronously attempts to retrieve pipeline health data from a backend API endpoint (`${apiBase}/pipeline/health`) with a 3-second timeout. Returns the parsed JSON response data if successful, or `null` if the request fails or times out.
+SOURCE: autodocs-react/src/components/StatusDashboard.jsx:1-395
+CONFIDENCE: High
+
+### generateSparkline Function
+- Signature: `function generateSparkline(base: number, count: number = 20)`
+- Purpose: Creates a repeatable dataset for a sparkline graph. It generates an array of `count` numeric points oscillating around the provided `base` value, with bounded variance.
+SOURCE: autodocs-react/src/components/StatusDashboard.jsx:1-395
+CONFIDENCE: High
+
+### Sparkline Component
+- Signature: `function Sparkline({ data: number[], color: string = '#f5e642', width: number = 120, height: number = 32 })`
+- Purpose: Renders an SVG sparkline. It visualizes the provided `data` array using a polyline and applies a linear gradient fill, with customizable `color`, `width`, and `height`.
+SOURCE: autodocs-react/src/components/StatusDashboard.jsx:1-395
+CONFIDENCE: High
+
+### StatusBadge Component
+- Signature: `function StatusBadge({ status: 'operational' | 'degraded' | 'down' })`
+- Purpose: Renders a styled pill badge. It visually indicates the operational `status` of a component using distinct colors and labels for 'operational', 'degraded', or 'down' states.
+SOURCE: autodocs-react/src/components/StatusDashboard.jsx:1-395
+CONFIDENCE: High
+
+### StageCard Component
+- Signature: `function StageCard({ stage: object, index: number, cardRef: React.Ref })`
+- Purpose: Renders an individual pipeline stage card. Each card displays the stage's icon, name, description, status (hardcoded as 'operational' in this implementation), average latency, and current throughput, accompanied by a sparkline. It incorporates animated entry and hover interactions.
+- Dependencies: `useState` (React Hook).
+SOURCE: autodocs-react/src/components/StatusDashboard.jsx:1-395
 CONFIDENCE: High
 <!-- AUTODOCS:MODULES_END -->
