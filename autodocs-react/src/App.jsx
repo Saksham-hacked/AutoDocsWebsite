@@ -10,6 +10,7 @@ import CodeBlock from './components/CodeBlock'
 import Pricing from './components/Pricing'
 import BetaProgram from './components/BetaProgram'
 import CTA from './components/CTA'
+import FAQ from './components/FAQ'
 import Footer from './components/Footer'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -57,6 +58,7 @@ export default function App() {
       <Features />
       <CodeBlock />
       <Pricing />
+      <FAQ />
       {/* <BetaProgram /> */}
       <CTA />
       <Footer />
