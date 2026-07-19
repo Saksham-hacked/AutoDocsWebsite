@@ -131,4 +131,52 @@ Provides a health check for the analytics service, including a database ping and
   - 500 Internal Server Error: { "success": false, "error": "Error message" }
 SOURCE: api/stats.js:74-81
 CONFIDENCE: High
+
+### GET /api/pipeline/health
+
+Retrieves the health and metrics of the AutoDocs pipeline stages.
+
+- Method: GET
+- Path: /api/pipeline/health
+- Parameters: None
+- Response example:
+  {
+    "success": true,
+    "data": [
+      {
+        "id": "webhook",
+        "status": "operational",
+        "avgLatency": 12,
+        "throughput": 340
+      },
+      {
+        "id": "diff",
+        "status": "operational",
+        "avgLatency": 85,
+        "throughput": 310
+      },
+      {
+        "id": "ai",
+        "status": "operational",
+        "avgLatency": 3200,
+        "throughput": 280
+      },
+      {
+        "id": "vector",
+        "status": "operational",
+        "avgLatency": 45,
+        "throughput": 295
+      },
+      {
+        "id": "docs",
+        "status": "operational",
+        "avgLatency": 1800,
+        "throughput": 260
+      }
+    ]
+  }
+- Error codes:
+  - 500 Internal Server Error: { "success": false, "error": "Error message" }
+SOURCE: autodocs-react/src/components/StatusDashboard.jsx:20-60, autodocs-react/src/components/StatusDashboard.jsx:100-106, autodocs-react/src/components/StatusDashboard.jsx:250-252
+CONFIDENCE: Medium
 <!-- AUTODOCS:ROUTES_END -->
