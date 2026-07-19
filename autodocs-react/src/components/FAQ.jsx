@@ -26,6 +26,11 @@ const faqs = [
     answer:
       'Yes! The free tier covers up to 50 pushes per month with full AI-powered documentation generation. No credit card required to get started.',
   },
+  {
+    question: 'How do I get started?',
+    answer:
+      'Install the AutoDocs GitHub App on your repository, push a commit, and watch the magic happen. Documentation PRs will appear within seconds — zero configuration needed for most projects.',
+  },
 ]
 
 function FAQItem({ question, answer }) {
