@@ -127,7 +127,7 @@ export default function FAQ() {
           fontSize: '1.1rem',
         }}
       >
-        Everything you need to know about AutoDocs
+        Got questions? We've got answers.
       </p>
       <div>
         {faqs.map((faq, i) => (
